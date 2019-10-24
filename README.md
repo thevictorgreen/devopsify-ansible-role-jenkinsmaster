@@ -1,2 +1,37 @@
-# devopsify-ansible-role-jenkinsmaster
-Ansible role to configure a Jenkins Master CI/CD server
+Role Name
+=========
+
+Installs and configures a Jenkins Master.
+
+Requirements
+------------
+
+None
+
+Role Variables
+--------------
+
+None
+
+Dependencies
+------------
+
+None
+
+Example Playbook
+----------------
+
+    - hosts: servers
+      roles:
+         - jenkinsmaster
+
+License
+-------
+
+BSD
+
+Author Information
+------------------
+
+Victor Green
+victor@vdigital.io
