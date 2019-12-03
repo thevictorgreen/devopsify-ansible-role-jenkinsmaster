@@ -4,3 +4,30 @@
   become: yes
   apt:
     update_cache: yes
+
+- name: Create Jenkins Master automation directories
+  become: yes
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - '/root/.jenkins_automate'
+
+- name: Upload jenkins_init.sh File
+  become: yes
+  copy:
+    src: jenkins_init.sh
+    dest: /root/.jenkins_automate/jenkins_init.sh
+
+- name: Change permissions on jenkins_init.sh
+  become: yes
+  file:
+    path: /root/.jenkins_automate/jenkins_init.sh
+    mode: "u+rwx"
+  ignore_errors: "{{ ansible_check_mode }}"
+
+- name: Run Jenkins Master Initialization script
+  become: yes
+  command: /root/.jenkins_automate/jenkins_init.sh
+  args:
+    executable: /bin/bash
